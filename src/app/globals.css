@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+  
+  --color-primary: #ff3e00;
+  --color-secondary: #00e5ff;
+  --color-accent: #ffff00;
+  --color-success: #00ff00;
+  
+  --shadow-brutal: 4px 4px 0px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px 0px #000000;
+  --shadow-brutal-sm: 2px 2px 0px 0px #000000;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .brutal-card {
+    @apply border-2 border-black bg-white shadow-brutal p-6 transition-all;
+  }
+  
+  .brutal-card-hover {
+    @apply hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg active:translate-x-0 active:translate-y-0 active:shadow-brutal;
+  }
+  
+  .brutal-btn {
+    @apply border-2 border-black bg-white px-6 py-2 font-bold shadow-brutal transition-all active:translate-x-0 active:translate-y-0 active:shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-brutal-lg cursor-pointer inline-flex items-center justify-center gap-2;
+  }
+  
+  .brutal-btn-primary {
+    @apply bg-primary text-white;
+  }
+  
+  .brutal-btn-secondary {
+    @apply bg-secondary text-black;
+  }
+
+  .brutal-btn-accent {
+    @apply bg-accent text-black;
+  }
+  
+  .brutal-input {
+    @apply border-2 border-black p-3 focus:outline-none focus:ring-0 focus:shadow-brutal bg-white placeholder:text-gray-500 font-medium;
+  }
+
+  .brutal-badge {
+    @apply border-2 border-black px-2 py-0.5 text-xs font-bold shadow-brutal-sm inline-block;
+  }
+}
+
+/* Wallet Adapter Custom Styles */
+.wallet-adapter-button {
+  @apply !border-2 !border-black !bg-white !text-black !rounded-none !shadow-brutal !transition-all !h-auto !px-6 !py-2 !font-bold !text-base hover:!-translate-x-1 hover:!-translate-y-1 hover:!shadow-brutal-lg active:!translate-x-0 active:!translate-y-0 active:!shadow-brutal !cursor-pointer !inline-flex !items-center !justify-center !gap-2;
+}
+
+.wallet-adapter-button-trigger {
+  @apply !bg-accent;
+}
+
+.wallet-adapter-modal-wrapper {
+  @apply !rounded-none !border-4 !border-black !shadow-brutal-lg;
+}
