@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { 
   Eye, 
@@ -20,7 +20,7 @@ import { useCloak } from "@/lib/cloak-context";
 import { format } from "date-fns";
 import { supabase } from "@/lib/supabase";
 
-export default function AuditPage() {
+function AuditContent() {
   const searchParams = useSearchParams();
   const initialKey = searchParams.get("key") || "";
   const { sdk } = useCloak();
@@ -200,5 +200,13 @@ export default function AuditPage() {
         </AnimatePresence>
       </main>
     </div>
+  );
+}
+
+export default function AuditPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center font-black uppercase tracking-widest text-gray-500">Loading Audit Portal...</div>}>
+      <AuditContent />
+    </Suspense>
   );
 }
